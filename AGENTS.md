@@ -33,5 +33,6 @@ use the editor.
 - Store roles separately from profiles; only validated database RPCs may write profiles, links, or roles, preventing client-controlled privilege escalation.
 - Keep private pages under the managed client-authenticated layout and revalidate every private server function with auth middleware; public pages stay SSR-enabled.
 - Use one root auth subscriber and clear the query cache before signing out so private student data cannot linger.
+- Keep password recovery on public pages using Cloud Auth emails and updateUser; the root auth subscriber records recovery events so consumed URL tokens still open the reset form.
 - Keep bilingual UI state in the Paalam provider; translated labels share the same screens and profile data.
 - Do not expose learner discovery, partner matching, or messaging before a safeguarding and consent workflow exists, because the audience includes minors.

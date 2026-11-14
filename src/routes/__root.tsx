@@ -135,6 +135,8 @@ function RootComponent() {
   useEffect(() => {
     let active = true;
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "PASSWORD_RECOVERY") { sessionStorage.setItem('paalam-recovery', 'true'); setUser(session?.user ?? null); return; }
+      if (event === "SIGNED_OUT") sessionStorage.removeItem('paalam-recovery');
       if (event === "INITIAL_SESSION") { setUser(session?.user ?? null); return; }
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       setUser(session?.user ?? null);
