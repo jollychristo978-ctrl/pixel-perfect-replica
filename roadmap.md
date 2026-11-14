@@ -27,3 +27,4 @@
 - [x] Remove log-ins: open straight in with a hidden per-device account
 - [x] Add Gajaan TikTok video 7702572412210171139 as demo in TikTok practice
 - [x] ElevenLabs English dub for Gajaan demo
+- [x] Add Tamil Dive: Krillion-inspired seven-round timed trivia, Tamil/transliteration/English answers, translation toggle, curated difficulty scores, local best depth and copyable results; all seven rounds, Tamil mode and 375px layout verified.

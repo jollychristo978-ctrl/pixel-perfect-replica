@@ -41,3 +41,4 @@ use the editor.
 - Do not expose learner discovery, partner matching, or messaging before a safeguarding and consent workflow exists, because the audience includes minors.
 - Learners enter without a log-in screen via automatic anonymous accounts on /auth; staff keep a hidden email sign-in so protected roles still need real accounts.
 - Keep Connect discovery organisation-only with bilingual searchable opportunities and official contact links; publish session times only after partner confirmation, so no learner data or fabricated availability is exposed.
+- Tamil Dive uses a browser-safe curated answer bank and deterministic UTC daily selection; its local vocabulary scores never claim population rarity or write bridge rewards.
