@@ -319,3 +319,6 @@ body:has(.bottom-tabs) { padding-bottom:72px; }
 .cx-safe{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
 .cx-safe span{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--primary);background:var(--secondary);padding:5px 10px;border-radius:99px}
 .cx-cta{height:52px;border-radius:12px}
+.demo-toggle{display:flex;gap:4px;background:var(--muted);padding:4px;border-radius:99px;margin-bottom:8px}
+.demo-toggle button{flex:1;padding:6px 10px;border-radius:99px;font-size:13px;font-weight:600;color:var(--muted-foreground)}
+.demo-toggle button.on{background:var(--card);color:var(--foreground);box-shadow:0 2px 6px -3px color-mix(in oklab,var(--foreground) 40%,transparent)}
