@@ -21,6 +21,8 @@
 - [x] Remove word lock from TikTok practice
 - [ ] Remove 'volumes' — waiting for the user to say which sounds to remove
 - [x] Uber-style organisation search with Tea Leaf Trust and Aram, bilingual filters, details and official group enquiries; no individual discovery.
+- [x] Add motion to the Connect screen and guide the learner to select a group.
+- [x] After selecting a group, show a connecting state that opens a demo call interface (clearly labelled demo; no live booking).
 - [ ] List and book confirmed organisation-run sessions — waiting for partners to supply session schedules, eligibility and joining details.
 - [x] Remove log-ins: open straight in with a hidden per-device account
 - [x] Add Gajaan TikTok video 7702572412210171139 as demo in TikTok practice
