@@ -1,8 +1,9 @@
 - [x] Build Paalam bilingual language selection and account flow
-- [ ] Regroup navigation and dashboard into Watch, Practise and Connect; add journey cues and verify all routes in Tamil at 375px.
+- [x] Regroup navigation and dashboard into Watch, Practise and Connect; add journey cues and verify learner/public pages in Tamil at 375px. Staff page correctly denies learner access; staff account verification remains below.
 - [x] Wire call nudges to the dual-timezone organisation page; preserve booking logic and data, with live booking intentionally inactive per user.
-- [ ] Show Tea Leaf Trust and Aram arrangements for over-18 organisation-led calls; no live connection for now, logos to follow from the user.
-- [ ] Add Scenes: three fictional Sri Lankan voice role-plays, cached ambience, bilingual dialogue, goal-based endings, saved vocabulary and private bridge rewards; verify the complete flow.
+- [x] Show Tea Leaf Trust and Aram arrangements for over-18 organisation-led calls; no live connection for now.
+- [ ] Add partner logos — waiting for the user to upload Tea Leaf Trust and Aram logos.
+- [x] Add Scenes: three fictional Sri Lankan voice role-plays, cached ambience, bilingual dialogue, goal-based endings, saved vocabulary and private bridge rewards. Verified real audio transcription with prerecorded Tamil through the mic, character voices, all three cached sounds, goal completion, rewards, word readback and 375px Tamil layout; live-person microphone testing remains a user check.
 - [x] Build Cinema Tutor: original Ravi Anna avatar, Cinema Hall unlocks, spoken scene acting, AI feedback, audio-driven mouth animation, Box Office stars and bridge rewards.
 - [ ] Verify Cinema Tutor with a real learner’s microphone recording — typed scoring, scene rewards, unlocks, actual TTS lip sync and microphone controls passed; real-person pronunciation input still needs checking.
 - [x] Save profiles with protected learner and staff roles

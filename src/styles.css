@@ -180,6 +180,9 @@
 .scene-verdict { margin-top:22px; padding-top:20px; border-top:1px solid var(--border); }
 .cinema-stars { display:flex; gap:6px; margin:18px 0; color:var(--border); }
 .cinema-stars .earned { color:var(--coral); fill:var(--accent); }
+.cinema-intro > div:last-child { min-width:0; }
+.cinema-intro button { white-space:normal; height:auto; min-height:36px; text-align:left; }
+.scene-dialogue { min-width:0; }
 @media(max-width:850px) { .poster-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:640px) { .cinema-heading h1 { font-size:28px; } .cinema-intro { gap:18px; } .cinema-intro .ravi-avatar { width:120px; } .cinema-intro h2 { font-size:20px; } .cinema-intro h2 span { display:block; } .cinema-quote { font-size:14px; } .cinema-stage { grid-template-columns:1fr; gap:20px; } .cinema-stage .ravi-avatar { width:200px; margin:auto; } .poster-copy { padding:12px; } .poster-copy h2 { font-size:16px; min-height:72px; } .poster-grid { gap:12px; } }
 @media(max-width:640px) { .shell { padding:0 20px; } .site-header { height:auto; padding:10px 0; } .header-inner { height:52px; } .bridge-stats { grid-template-columns:repeat(2,1fr); } .impact-hero h1 { font-size:30px; } .brand { font-size:23px; } .brand span { font-size:17px; } .hero { padding-top:32px; } .hero h1 { font-size:36px; } .hero h1 span { font-size:26px; } .hero-copy { font-size:14px; } .bridge-image { height:165px; object-fit:cover; } .path-grid { grid-template-columns:1fr; gap:14px; margin-top:22px; } .path-card { padding:22px; } .path-icon { float:left; margin-right:14px; margin-bottom:12px; } .path-card h3 { font-size:20px; } .path-card p { min-height:0; clear:both; } .country-tag { margin:12px 0 16px; } .join-section h2 { font-size:24px; } .steps-grid { grid-template-columns:1fr; gap:20px; } .form-grid { grid-template-columns:1fr; } .footer { flex-direction:column; gap:8px; } .trust-row { gap:13px; } .profile-details { grid-template-columns:1fr; } }
