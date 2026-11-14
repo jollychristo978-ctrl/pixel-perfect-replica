@@ -12,9 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as AuthenticatedBridgeRouteImport } from './routes/_authenticated/bridge'
+import { Route as AuthenticatedCallsRouteImport } from './routes/_authenticated/calls'
 import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedPaatiRouteImport } from './routes/_authenticated/paati'
+import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,6 +34,21 @@ const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedBridgeRoute = AuthenticatedBridgeRouteImport.update({
+  id: '/bridge',
+  path: '/bridge',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCallsRoute = AuthenticatedCallsRouteImport.update({
+  id: '/calls',
+  path: '/calls',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedCommunityRoute = AuthenticatedCommunityRouteImport.update({
   id: '/community',
@@ -45,49 +65,100 @@ const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPaatiRoute = AuthenticatedPaatiRouteImport.update({
+  id: '/paati',
+  path: '/paati',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedQuestRoute = AuthenticatedQuestRouteImport.update({
+  id: '/quest',
+  path: '/quest',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/impact': typeof ImpactRoute
+  '/bridge': typeof AuthenticatedBridgeRoute
+  '/calls': typeof AuthenticatedCallsRoute
   '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/paati': typeof AuthenticatedPaatiRoute
+  '/quest': typeof AuthenticatedQuestRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/impact': typeof ImpactRoute
+  '/bridge': typeof AuthenticatedBridgeRoute
+  '/calls': typeof AuthenticatedCallsRoute
   '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/paati': typeof AuthenticatedPaatiRoute
+  '/quest': typeof AuthenticatedQuestRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/impact': typeof ImpactRoute
+  '/_authenticated/bridge': typeof AuthenticatedBridgeRoute
+  '/_authenticated/calls': typeof AuthenticatedCallsRoute
   '/_authenticated/community': typeof AuthenticatedCommunityRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/paati': typeof AuthenticatedPaatiRoute
+  '/_authenticated/quest': typeof AuthenticatedQuestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/community' | '/dashboard' | '/onboarding'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/impact'
+    | '/bridge'
+    | '/calls'
+    | '/community'
+    | '/dashboard'
+    | '/onboarding'
+    | '/paati'
+    | '/quest'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/community' | '/dashboard' | '/onboarding'
+  to:
+    | '/'
+    | '/auth'
+    | '/impact'
+    | '/bridge'
+    | '/calls'
+    | '/community'
+    | '/dashboard'
+    | '/onboarding'
+    | '/paati'
+    | '/quest'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/impact'
+    | '/_authenticated/bridge'
+    | '/_authenticated/calls'
     | '/_authenticated/community'
     | '/_authenticated/dashboard'
     | '/_authenticated/onboarding'
+    | '/_authenticated/paati'
+    | '/_authenticated/quest'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ImpactRoute: typeof ImpactRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -113,6 +184,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/bridge': {
+      id: '/_authenticated/bridge'
+      path: '/bridge'
+      fullPath: '/bridge'
+      preLoaderRoute: typeof AuthenticatedBridgeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/calls': {
+      id: '/_authenticated/calls'
+      path: '/calls'
+      fullPath: '/calls'
+      preLoaderRoute: typeof AuthenticatedCallsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/community': {
       id: '/_authenticated/community'
       path: '/community'
@@ -134,19 +226,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/paati': {
+      id: '/_authenticated/paati'
+      path: '/paati'
+      fullPath: '/paati'
+      preLoaderRoute: typeof AuthenticatedPaatiRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/quest': {
+      id: '/_authenticated/quest'
+      path: '/quest'
+      fullPath: '/quest'
+      preLoaderRoute: typeof AuthenticatedQuestRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBridgeRoute: typeof AuthenticatedBridgeRoute
+  AuthenticatedCallsRoute: typeof AuthenticatedCallsRoute
   AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPaatiRoute: typeof AuthenticatedPaatiRoute
+  AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBridgeRoute: AuthenticatedBridgeRoute,
+  AuthenticatedCallsRoute: AuthenticatedCallsRoute,
   AuthenticatedCommunityRoute: AuthenticatedCommunityRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPaatiRoute: AuthenticatedPaatiRoute,
+  AuthenticatedQuestRoute: AuthenticatedQuestRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -156,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ImpactRoute: ImpactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

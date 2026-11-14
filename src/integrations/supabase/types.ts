@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      call_bookings: {
+        Row: {
+          created_at: string
+          id: string
+          partner_name: string
+          slot_start: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          partner_name: string
+          slot_start: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          partner_name?: string
+          slot_start?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       charity_invites: {
         Row: {
           active: boolean
@@ -51,6 +75,63 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      clips: {
+        Row: {
+          created_at: string
+          id: string
+          quiz: Json
+          title: string
+          transcript: string
+          translation: string
+          user_id: string
+          words: Json
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          quiz?: Json
+          title?: string
+          transcript?: string
+          translation?: string
+          user_id: string
+          words?: Json
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          quiz?: Json
+          title?: string
+          transcript?: string
+          translation?: string
+          user_id?: string
+          words?: Json
+        }
+        Relationships: []
+      }
+      impact_counters: {
+        Row: {
+          bricks: number
+          calls_held: number
+          id: number
+          lessons_unlocked: number
+          students_helped: number
+        }
+        Insert: {
+          bricks?: number
+          calls_held?: number
+          id: number
+          lessons_unlocked?: number
+          students_helped?: number
+        }
+        Update: {
+          bricks?: number
+          calls_held?: number
+          id?: number
+          lessons_unlocked?: number
+          students_helped?: number
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -105,6 +186,33 @@ export type Database = {
           },
         ]
       }
+      saved_words: {
+        Row: {
+          created_at: string
+          english: string
+          id: string
+          tamil: string
+          transliteration: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          english?: string
+          id?: string
+          tamil: string
+          transliteration?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          english?: string
+          id?: string
+          tamil?: string
+          transliteration?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -123,11 +231,43 @@ export type Database = {
         }
         Relationships: []
       }
+      xp_events: {
+        Row: {
+          created_at: string
+          id: string
+          points: number
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          points: number
+          reason?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          points?: number
+          reason?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      add_paalam_xp: {
+        Args: { p_points: number; p_reason: string }
+        Returns: undefined
+      }
+      book_paalam_call: {
+        Args: { p_partner_name: string; p_slot_start: string }
+        Returns: undefined
+      }
       create_charity_invite: {
         Args: { p_charity_name: string }
         Returns: string
