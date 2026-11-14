@@ -15,3 +15,4 @@
 - [x] Add Voice Twin: 18+ only, coordinator verification, consent screen, private voice ID storage, permanent AI label, instant delete
 - [ ] Verify Clip Quest and Paati Says with real recorded audio — pages render and booking is proven, but the ElevenLabs transcription path was not exercised with a real clip.
 - [ ] Verify Voice Twin consent flow as a verified 18+ volunteer — the under-18 hiding is proven, but consent, voice playback and deletion need an 18+ verified test account.
+- [ ] Bring Paaru app features into Paalam (awaiting scope)
