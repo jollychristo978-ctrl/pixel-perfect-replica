@@ -26,6 +26,7 @@ import { Route as AuthenticatedPaatiRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedPracticeRouteImport } from './routes/_authenticated/practice'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 import { Route as AuthenticatedScenesRouteImport } from './routes/_authenticated/scenes'
+import { Route as AuthenticatedTamilDiveRouteImport } from './routes/_authenticated/tamil-dive'
 import { Route as AuthenticatedTiktokRouteImport } from './routes/_authenticated/tiktok'
 
 const IndexRoute = IndexRouteImport.update({
@@ -112,6 +113,11 @@ const AuthenticatedScenesRoute = AuthenticatedScenesRouteImport.update({
   path: '/scenes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTamilDiveRoute = AuthenticatedTamilDiveRouteImport.update({
+  id: '/tamil-dive',
+  path: '/tamil-dive',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTiktokRoute = AuthenticatedTiktokRouteImport.update({
   id: '/tiktok',
   path: '/tiktok',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/scenes': typeof AuthenticatedScenesRoute
+  '/tamil-dive': typeof AuthenticatedTamilDiveRoute
   '/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRoutesByTo {
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/scenes': typeof AuthenticatedScenesRoute
+  '/tamil-dive': typeof AuthenticatedTamilDiveRoute
   '/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRoutesById {
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/_authenticated/practice': typeof AuthenticatedPracticeRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
   '/_authenticated/scenes': typeof AuthenticatedScenesRoute
+  '/_authenticated/tamil-dive': typeof AuthenticatedTamilDiveRoute
   '/_authenticated/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRouteTypes {
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/quest'
     | '/scenes'
+    | '/tamil-dive'
     | '/tiktok'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/quest'
     | '/scenes'
+    | '/tamil-dive'
     | '/tiktok'
   id:
     | '__root__'
@@ -235,6 +246,7 @@ export interface FileRouteTypes {
     | '/_authenticated/practice'
     | '/_authenticated/quest'
     | '/_authenticated/scenes'
+    | '/_authenticated/tamil-dive'
     | '/_authenticated/tiktok'
   fileRoutesById: FileRoutesById
 }
@@ -368,6 +380,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedScenesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/tamil-dive': {
+      id: '/_authenticated/tamil-dive'
+      path: '/tamil-dive'
+      fullPath: '/tamil-dive'
+      preLoaderRoute: typeof AuthenticatedTamilDiveRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/tiktok': {
       id: '/_authenticated/tiktok'
       path: '/tiktok'
@@ -390,6 +409,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPracticeRoute: typeof AuthenticatedPracticeRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
   AuthenticatedScenesRoute: typeof AuthenticatedScenesRoute
+  AuthenticatedTamilDiveRoute: typeof AuthenticatedTamilDiveRoute
   AuthenticatedTiktokRoute: typeof AuthenticatedTiktokRoute
 }
 
@@ -405,6 +425,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPracticeRoute: AuthenticatedPracticeRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
   AuthenticatedScenesRoute: AuthenticatedScenesRoute,
+  AuthenticatedTamilDiveRoute: AuthenticatedTamilDiveRoute,
   AuthenticatedTiktokRoute: AuthenticatedTiktokRoute,
 }
 
