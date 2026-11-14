@@ -1,6 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { Flame, Award, Users } from 'lucide-react';
+import { Flame, Award, Users, Lock, Video } from 'lucide-react';
+import {Button} from '@/components/ui/button';
+import {FIRST_CALL_XP,callProgress} from '@/lib/paalam-journey';
 import { bridgeOptions } from '@/lib/paalam.queries';
 import { meta } from '@/lib/paalam';
 import { usePaalam } from '@/components/paalam/context';
@@ -27,6 +29,7 @@ function Bridge() {
   const completed = Math.floor(data.totalXp / GOAL);
   const progress = (data.totalXp % GOAL) / GOAL;
   const filled = Math.round(progress * SEGMENTS);
+  const call = callProgress(data.totalXp);
 
   const badges = [
     { name: t('First Kural', 'முதல் குறள்'), earned: data.words.length >= 1 },
@@ -70,6 +73,13 @@ function Bridge() {
           {t(`${Math.round(progress * 100)}% of this bridge built — ${GOAL - (data.totalXp % GOAL)} XP to go`, `இந்த பாலம் ${Math.round(progress * 100)}% கட்டப்பட்டது — மீதம் ${GOAL - (data.totalXp % GOAL)} XP`)}
         </p>
       </div>
+
+      <section className="call-unlock">
+        <h2>{t('Unlock your first Sri Lanka call','உங்கள் முதல் இலங்கை அழைப்பைத் திறக்குங்கள்')}</h2>
+        <p className="subtext">{Math.min(data.totalXp,FIRST_CALL_XP)} / {FIRST_CALL_XP} XP</p>
+        <progress className="call-progress" value={Math.min(data.totalXp,FIRST_CALL_XP)} max={FIRST_CALL_XP} aria-label={t('First call progress','முதல் அழைப்பு முன்னேற்றம்')}/>
+        {call.unlocked?<Button asChild><Link to="/calls"><Video/>{t('Book a call','அழைப்பை முன்பதிவு செய்')}</Link></Button>:<Button disabled variant="outline"><Lock/>{t(`${call.remaining} XP left`, `இன்னும் ${call.remaining} XP`)}</Button>}
+      </section>
 
       <h2 className="text-xl font-semibold mt-8 mb-3 flex items-center gap-2"><Award size={18} />{t('Badges', 'பதக்கங்கள்')}</h2>
       <div className="badge-row">

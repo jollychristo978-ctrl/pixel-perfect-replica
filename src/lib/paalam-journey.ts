@@ -18,8 +18,8 @@ export function journeyStep(pathname:string) {
   return JOURNEY.find(step=>step.links.some(link=>pathname===link.to))?.id ?? 'watch';
 }
 
-// Match the existing booking RPC's completed-bridge requirement; this is a nudge, not authorization.
-export const FIRST_CALL_XP = 500;
+// Journey nudge only: existing server-side booking and safeguarding logic stays unchanged.
+export const FIRST_CALL_XP = 200;
 export function callProgress(xp:number) {
   return {unlocked:xp>=FIRST_CALL_XP, remaining:Math.max(0,FIRST_CALL_XP-xp)};
 }

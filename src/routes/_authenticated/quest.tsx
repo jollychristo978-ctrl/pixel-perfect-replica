@@ -1,6 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { useState } from 'react';
-import { Clapperboard, Upload, Volume2, BookmarkPlus, CheckCircle2 } from 'lucide-react';
+import { Clapperboard, Upload, Volume2, BookmarkPlus, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePaalam } from '@/components/paalam/context';
 import { meta } from '@/lib/paalam';
@@ -185,7 +185,7 @@ function ClipQuest() {
               <strong>
                 {score}/{result.quiz.length} {t('correct', 'சரி')}
               </strong>
-              <p>{score > 0 ? t(`You earned ${score * 15} XP — another brick on the bridge!`, `நீங்கள் ${score * 15} XP பெற்றீர்கள் — பாலத்தில் இன்னொரு செங்கல்!`) : t('No worries — watch once more and try again.', 'பரவாயில்லை — மீண்டும் பார்த்து முயற்சிக்கவும்.')}</p>
+              <p>{score > 0 ? t(`You earned ${score * 15} XP — another brick on the bridge!`, `நீங்கள் ${score * 15} XP பெற்றீர்கள் — பாலத்தில் இன்னொரு செங்கல்!`) : t('No worries — watch once more and try again.', 'பரவாயில்லை — மீண்டும் பார்த்து முயற்சிக்கவும்.')}</p><Button asChild className="mt-3"><Link to="/paati">{t('Now say it back','இப்போது திரும்பச் சொல்லுங்கள்')}<ArrowRight/></Link></Button>
             </div>
           )}
         </section>
