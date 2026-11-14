@@ -16,7 +16,7 @@
 - [ ] Verify Clip Quest and Paati Says with real recorded audio — pages render and booking is proven, but the ElevenLabs transcription path was not exercised with a real clip.
 - [ ] Verify Voice Twin consent flow as a verified 18+ volunteer — the under-18 hiding is proven, but consent, voice playback and deletion need an 18+ verified test account.
 - [x] Paaru features: level check, passport stamps, word-gated clips
-- [ ] Write MECE feature list (built + proposed)
+- [x] Write MECE feature list (built + proposed)
 - [x] Remove word lock from TikTok practice
 - [x] Remove word lock from TikTok practice
-- [ ] Remove 'volumes' (clarifying what this means)
+- [ ] Remove 'volumes' — waiting for the user to say which sounds to remove
