@@ -1,5 +1,6 @@
 - [x] Build Paalam bilingual language selection and account flow
-- [ ] Build Cinema Tutor: original Ravi Anna avatar, Cinema Hall unlocks, spoken scene acting, AI feedback, audio-driven mouth animation, Box Office stars and bridge rewards.
+- [x] Build Cinema Tutor: original Ravi Anna avatar, Cinema Hall unlocks, spoken scene acting, AI feedback, audio-driven mouth animation, Box Office stars and bridge rewards.
+- [ ] Verify Cinema Tutor with a real learner’s microphone recording — typed scoring, scene rewards, unlocks, actual TTS lip sync and microphone controls passed; real-person pronunciation input still needs checking.
 - [x] Save profiles with protected learner and staff roles
 - [x] Add charity invites and coordinator student management
 - [x] Verify onboarding, profile persistence, access rules and mobile layout
