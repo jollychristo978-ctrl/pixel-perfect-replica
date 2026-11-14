@@ -132,24 +132,25 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
   useEffect(() => {
     let active = true;
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "PASSWORD_RECOVERY") { sessionStorage.setItem('paalam-recovery', 'true'); setUser(session?.user ?? null); return; }
+      if (event === "PASSWORD_RECOVERY") { sessionStorage.setItem('paalam-recovery', 'true'); setUser(session?.user ?? null); setAuthReady(true); return; }
       if (event === "SIGNED_OUT") sessionStorage.removeItem('paalam-recovery');
-      if (event === "INITIAL_SESSION") { setUser(session?.user ?? null); return; }
+      if (event === "INITIAL_SESSION") { setUser(session?.user ?? null); setAuthReady(true); return; }
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       setUser(session?.user ?? null);
       void router.invalidate();
       if (event !== "SIGNED_OUT") void queryClient.invalidateQueries();
     });
-    void supabase.auth.getUser().then(({data}) => { if (active) setUser(data.user); });
+    void supabase.auth.getUser().then(({data}) => { if (active) { setUser(data.user); setAuthReady(true); } });
     return () => { active = false; subscription.unsubscribe(); };
   }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <PaalamProvider user={user}>
+      <PaalamProvider user={user} authReady={authReady}>
         <Header />
         <Outlet />
       </PaalamProvider>

@@ -12,8 +12,9 @@ import { JOURNEY } from '@/lib/paalam-journey';
 export const Route=createFileRoute('/')({head:()=>meta('Paalam — Learn a language, build a bridge','A two-way Tamil and English language exchange connecting learners in the UK and Sri Lanka.'),component:Home});
 const ICONS=[Play,Mic,Phone];
 function useReveal(){const ref=useRef<HTMLElement>(null);useEffect(()=>{const root=ref.current;if(!root)return;const els=root.querySelectorAll('.reveal');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}}),{threshold:.15});els.forEach(el=>io.observe(el));return()=>io.disconnect();},[]);return ref;}
-function Home(){const {t,user}=usePaalam(); const navigate=useNavigate(); const ref=useReveal();
-useEffect(()=>{ if(user) void navigate({to:'/quest',replace:true}); },[user,navigate]);
+function Home(){const {t,user,authReady}=usePaalam(); const navigate=useNavigate(); const ref=useReveal();
+useEffect(()=>{ if(authReady&&user) void navigate({to:'/quest',replace:true}); },[authReady,user,navigate]);
+if(!authReady||user) return <main className="shell" style={{minHeight:'60vh'}} aria-busy="true"/>;
 const words=['வணக்கம்','Hello','நன்றி','Thank you','நண்பன்','Friend','பாலம்','Bridge'];
 return <><main ref={ref} className="landing">
 <section className="lp-hero shell">
