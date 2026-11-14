@@ -264,6 +264,69 @@ export type Database = {
           },
         ]
       }
+      roleplay_ambience: {
+        Row: {
+          created_at: string
+          path: string | null
+          scene_id: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          path?: string | null
+          scene_id: string
+          status: string
+        }
+        Update: {
+          created_at?: string
+          path?: string | null
+          scene_id?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      roleplay_sessions: {
+        Row: {
+          awarded: boolean
+          created_at: string
+          ended: boolean
+          exchanges: number
+          feedback: Json | null
+          id: string
+          level: string
+          scene_id: string
+          stars: number | null
+          turns: Json
+          user_id: string
+        }
+        Insert: {
+          awarded?: boolean
+          created_at?: string
+          ended?: boolean
+          exchanges?: number
+          feedback?: Json | null
+          id?: string
+          level?: string
+          scene_id: string
+          stars?: number | null
+          turns?: Json
+          user_id: string
+        }
+        Update: {
+          awarded?: boolean
+          created_at?: string
+          ended?: boolean
+          exchanges?: number
+          feedback?: Json | null
+          id?: string
+          level?: string
+          scene_id?: string
+          stars?: number | null
+          turns?: Json
+          user_id?: string
+        }
+        Relationships: []
+      }
       saved_words: {
         Row: {
           created_at: string
@@ -356,6 +419,10 @@ export type Database = {
         Returns: string
       }
       delete_voice_twin: { Args: never; Returns: undefined }
+      finish_roleplay_session: {
+        Args: { p_session_id: string }
+        Returns: number
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -30,6 +30,7 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## Paalam architecture
+- Role-play Scenes persist private server-owned sessions, compare-and-set exchanges, and atomic once-per-session rewards; cache claimed ambience in private storage to avoid repeat generation.
 - Share bilingual journey groups and route-to-step mapping between navigation and dashboard; keep the XP call nudge presentation-only so existing booking authorization stays unchanged.
 - Store roles separately from profiles; only validated database RPCs may write profiles, links, or roles, preventing client-controlled privilege escalation.
 - Keep private pages under the managed client-authenticated layout and revalidate every private server function with auth middleware; public pages stay SSR-enabled.

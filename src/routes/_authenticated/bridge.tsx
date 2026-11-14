@@ -88,6 +88,8 @@ function Bridge() {
         ))}
       </div>
 
+      <section className="mt-8"><h2 className="text-xl font-semibold mb-3">{t('My Words','என் சொற்கள்')}</h2>{data.words.length?<div className="word-grid">{data.words.map(word=><div className="word-chip" key={word.tamil}><p className="word-tamil font-tamil">{word.tamil}</p><p className="subtext">{word.transliteration}</p><p className="subtext text-xs">{word.english}</p></div>)}</div>:<p className="subtext">{t('No words saved yet.','இன்னும் சொற்கள் சேமிக்கப்படவில்லை.')}</p>}</section>
+
       <h2 className="text-xl font-semibold mt-8 mb-3 flex items-center gap-2"><Users size={18} />{t('Pair league', 'ஜோடி லீக்')}</h2>
       <p className="subtext mb-3">{t('UK–Sri Lanka pairs compete together against other pairs. Demo standings:', 'இங்கிலாந்து–இலங்கை ஜோடிகள் மற்ற ஜோடிகளுடன் போட்டியிடுகின்றன. டெமோ மதிப்பெண்கள்:')}</p>
       <div className="league-list">

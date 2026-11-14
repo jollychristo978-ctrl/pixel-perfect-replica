@@ -24,6 +24,7 @@ import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authentic
 import { Route as AuthenticatedPaatiRouteImport } from './routes/_authenticated/paati'
 import { Route as AuthenticatedPracticeRouteImport } from './routes/_authenticated/practice'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
+import { Route as AuthenticatedScenesRouteImport } from './routes/_authenticated/scenes'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -99,6 +100,11 @@ const AuthenticatedQuestRoute = AuthenticatedQuestRouteImport.update({
   path: '/quest',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedScenesRoute = AuthenticatedScenesRouteImport.update({
+  id: '/scenes',
+  path: '/scenes',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/paati': typeof AuthenticatedPaatiRoute
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/scenes': typeof AuthenticatedScenesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/paati': typeof AuthenticatedPaatiRoute
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
+  '/scenes': typeof AuthenticatedScenesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/_authenticated/paati': typeof AuthenticatedPaatiRoute
   '/_authenticated/practice': typeof AuthenticatedPracticeRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
+  '/_authenticated/scenes': typeof AuthenticatedScenesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/paati'
     | '/practice'
     | '/quest'
+    | '/scenes'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -183,6 +193,7 @@ export interface FileRouteTypes {
     | '/paati'
     | '/practice'
     | '/quest'
+    | '/scenes'
   id:
     | '__root__'
     | '/'
@@ -200,6 +211,7 @@ export interface FileRouteTypes {
     | '/_authenticated/paati'
     | '/_authenticated/practice'
     | '/_authenticated/quest'
+    | '/_authenticated/scenes'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -318,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedQuestRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/scenes': {
+      id: '/_authenticated/scenes'
+      path: '/scenes'
+      fullPath: '/scenes'
+      preLoaderRoute: typeof AuthenticatedScenesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -331,6 +350,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPaatiRoute: typeof AuthenticatedPaatiRoute
   AuthenticatedPracticeRoute: typeof AuthenticatedPracticeRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
+  AuthenticatedScenesRoute: typeof AuthenticatedScenesRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -343,6 +363,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPaatiRoute: AuthenticatedPaatiRoute,
   AuthenticatedPracticeRoute: AuthenticatedPracticeRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
+  AuthenticatedScenesRoute: AuthenticatedScenesRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

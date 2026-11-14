@@ -22,6 +22,20 @@
       "when": 1794672435533,
       "tag": "0002_cinema_tutor_results",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794673679895,
+      "tag": "0003_roleplay_scene_sessions",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1794674032215,
+      "tag": "0004_correct_roleplay_bridge_reward",
+      "breakpoints": true
     }
   ]
 }

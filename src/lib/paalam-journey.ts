@@ -6,6 +6,7 @@ export const JOURNEY = [
   {id:'practise', number:2, label:['Practise','பயிற்சி'], subtitle:['Speak it back and earn XP','திரும்பச் சொல்லி XP பெறுங்கள்'], links:[
     {to:'/paati', label:['Paati Says','பாட்டி சொல்கிறார்'], copy:['Quick-fire spoken challenges','விரைவான பேச்சுச் சவால்கள்']},
     {to:'/practice', label:['AI Partner','AI துணை'], copy:['Practise for your next call','உங்கள் அடுத்த அழைப்புக்குப் பயிற்சி செய்யுங்கள்']},
+    {to:'/scenes', label:['Scenes','காட்சிகள்'], copy:['Tamil role-play in Sri Lanka','இலங்கைச் சூழல்களில் தமிழ்ப் பயிற்சி']},
     {to:'/bridge', label:['Bridge XP','பாலம் XP'], copy:['Your XP builds London to Jaffna','உங்கள் XP லண்டன் முதல் யாழ்ப்பாணம் வரை பாலம் கட்டுகிறது']},
   ]},
   {id:'connect', number:3, label:['Connect','இணை'], subtitle:['Unlock real calls with Sri Lanka','இலங்கையுடன் நிஜ அழைப்புகளைத் திறக்குங்கள்'], links:[
