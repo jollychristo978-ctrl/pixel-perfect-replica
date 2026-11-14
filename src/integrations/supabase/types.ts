@@ -14,16 +14,155 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      charity_invites: {
+        Row: {
+          active: boolean
+          charity_name: string
+          code: string
+          coordinator_id: string
+          created_at: string
+          expires_at: string
+          id: string
+        }
+        Insert: {
+          active?: boolean
+          charity_name: string
+          code: string
+          coordinator_id: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+        }
+        Update: {
+          active?: boolean
+          charity_name?: string
+          code?: string
+          coordinator_id?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "charity_invites_coordinator_id_fkey"
+            columns: ["coordinator_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          age_group: string
+          coordinator_id: string | null
+          country: string
+          created_at: string
+          display_name: string
+          id: string
+          interests: string[]
+          learning_language: string
+          native_language: string
+          onboarded: boolean
+          school: string
+          timezone: string
+        }
+        Insert: {
+          age_group?: string
+          coordinator_id?: string | null
+          country?: string
+          created_at?: string
+          display_name?: string
+          id: string
+          interests?: string[]
+          learning_language?: string
+          native_language?: string
+          onboarded?: boolean
+          school?: string
+          timezone?: string
+        }
+        Update: {
+          age_group?: string
+          coordinator_id?: string | null
+          country?: string
+          created_at?: string
+          display_name?: string
+          id?: string
+          interests?: string[]
+          learning_language?: string
+          native_language?: string
+          onboarded?: boolean
+          school?: string
+          timezone?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_coordinator_id_fkey"
+            columns: ["coordinator_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      create_charity_invite: {
+        Args: { p_charity_name: string }
+        Returns: string
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      save_paalam_profile: {
+        Args: {
+          p_age_group: string
+          p_country: string
+          p_display_name: string
+          p_interests: string[]
+          p_invite_code?: string
+          p_learning_language: string
+          p_native_language: string
+          p_school: string
+          p_timezone: string
+        }
+        Returns: undefined
+      }
+      set_paalam_staff_role: {
+        Args: {
+          p_role: Database["public"]["Enums"]["app_role"]
+          p_user_id: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "learner_tamil" | "learner_english" | "coordinator" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +289,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["learner_tamil", "learner_english", "coordinator", "admin"],
+    },
   },
 } as const

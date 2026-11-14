@@ -1,2 +1,5 @@
-- [ ] ElevenLabs onboard CLI
-- [ ] Build Grammar Ghost Hunt game
+- [x] Build Paalam bilingual language selection and account flow
+- [x] Save profiles with protected learner and staff roles
+- [x] Add charity invites and coordinator student management
+- [x] Verify onboarding, profile persistence, access rules and mobile layout
+- [ ] Activate the first admin and verify coordinator invite redemption end-to-end — waiting for the user to identify their staff account; no admin is assigned yet.

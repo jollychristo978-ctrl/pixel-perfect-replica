@@ -8,8 +8,12 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
+import type { User } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
+import { PaalamProvider } from "@/components/paalam/context";
+import { Header } from "@/components/paalam/header";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -81,11 +85,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Grammar Ghost Hunt" },
-      { name: "description", content: "A Tamil sentence-building game for PARAI TamilHack." },
+      { title: "Paalam | பாலம்" },
+      { name: "description", content: "A two-way Tamil and English language exchange connecting the UK and Sri Lanka." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Grammar Ghost Hunt" },
-      { property: "og:description", content: "A Tamil sentence-building game for PARAI TamilHack." },
+      { property: "og:title", content: "Paalam | பாலம்" },
+      { property: "og:description", content: "A two-way Tamil and English language exchange connecting the UK and Sri Lanka." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -100,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;650;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -126,11 +130,27 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    let active = true;
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "INITIAL_SESSION") { setUser(session?.user ?? null); return; }
+      if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
+      setUser(session?.user ?? null);
+      void router.invalidate();
+      if (event !== "SIGNED_OUT") void queryClient.invalidateQueries();
+    });
+    void supabase.auth.getUser().then(({data}) => { if (active) setUser(data.user); });
+    return () => { active = false; subscription.unsubscribe(); };
+  }, [router, queryClient]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <PaalamProvider user={user}>
+        <Header />
+        <Outlet />
+      </PaalamProvider>
     </QueryClientProvider>
   );
 }
