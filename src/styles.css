@@ -10,7 +10,7 @@
 @layer base { * { border-color:var(--border); } body { margin:0; background:var(--background); color:var(--foreground); font-family:var(--font-sans); letter-spacing:0; } button,input,select { font:inherit; } button,a,input,select { -webkit-tap-highlight-color:transparent; } h1,h2,h3,p { margin:0; } }
 .shell { max-width:1120px; margin:auto; padding:0 32px; }
 .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:26px; }
-.brand-mark { width:36px; height:34px; color:var(--primary); }
+.brand-mark { width:36px; height:36px; color:var(--foreground); }
 .site-header { height:auto; border-bottom:1px solid var(--border); background:var(--card); }
 .header-inner { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; height:88px; gap:16px; }
 .header-inner > div { flex-shrink:0; }
@@ -211,3 +211,11 @@
 .scene-results h2 { font-size:24px; font-weight:650; }
 .scene-results h3 { font-size:18px; font-weight:650; margin:24px 0 12px; }
 @media(max-width:640px){.scene-grid { grid-template-columns:1fr; }.scene-picture { aspect-ratio:1.25; }.scene-character { grid-template-columns:100px minmax(0,1fr); gap:16px; }.scene-character .scene-picture { aspect-ratio:1/1.2; }.scene-character h2 { font-size:20px; }.scene-card .subtext { min-height:0; }.scenes-page .chat-input-row { width:100%; }.scene-results button { white-space:normal; height:auto; min-height:36px; }}
+.home-journey { padding-top:28px; padding-bottom:8px; text-align:center; }
+.home-journey h2 { font-size:26px; font-weight:700; }
+.home-journey-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
+.home-journey-card { display:flex; flex-direction:column; align-items:flex-start; gap:6px; text-align:left; padding:20px; border:1px solid var(--border); border-radius:16px; background:var(--card); transition:border-color .2s; }
+.home-journey-card:hover { border-color:var(--primary); }
+.home-journey-card h3 { font-size:20px; font-weight:700; }
+.home-journey-go { display:inline-flex; align-items:center; gap:4px; margin-top:auto; color:var(--primary); font-weight:600; font-size:14px; }
+@media(max-width:640px){ .home-journey-grid { grid-template-columns:1fr; } }
