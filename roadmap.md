@@ -1,4 +1,6 @@
 - [x] Build Paalam bilingual language selection and account flow
+- [ ] Regroup navigation and dashboard into Watch, Practise and Connect; add journey cues and verify all routes in Tamil at 375px.
+- [ ] Wire call nudges to dual-timezone booking while preserving current eligibility and safety logic; identify any real-call activation blockers.
 - [x] Build Cinema Tutor: original Ravi Anna avatar, Cinema Hall unlocks, spoken scene acting, AI feedback, audio-driven mouth animation, Box Office stars and bridge rewards.
 - [ ] Verify Cinema Tutor with a real learner’s microphone recording — typed scoring, scene rewards, unlocks, actual TTS lip sync and microphone controls passed; real-person pronunciation input still needs checking.
 - [x] Save profiles with protected learner and staff roles
