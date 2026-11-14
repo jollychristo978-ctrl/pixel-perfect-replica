@@ -20,6 +20,7 @@ import { Route as AuthenticatedCallsRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedCinemaRouteImport } from './routes/_authenticated/cinema'
 import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedLevelCheckRouteImport } from './routes/_authenticated/level-check'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedPaatiRouteImport } from './routes/_authenticated/paati'
 import { Route as AuthenticatedPracticeRouteImport } from './routes/_authenticated/practice'
@@ -81,6 +82,11 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedLevelCheckRoute = AuthenticatedLevelCheckRouteImport.update({
+  id: '/level-check',
+  path: '/level-check',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
@@ -123,6 +129,7 @@ export interface FileRoutesByFullPath {
   '/cinema': typeof AuthenticatedCinemaRoute
   '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/level-check': typeof AuthenticatedLevelCheckRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/paati': typeof AuthenticatedPaatiRoute
   '/practice': typeof AuthenticatedPracticeRoute
@@ -141,6 +148,7 @@ export interface FileRoutesByTo {
   '/cinema': typeof AuthenticatedCinemaRoute
   '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/level-check': typeof AuthenticatedLevelCheckRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/paati': typeof AuthenticatedPaatiRoute
   '/practice': typeof AuthenticatedPracticeRoute
@@ -161,6 +169,7 @@ export interface FileRoutesById {
   '/_authenticated/cinema': typeof AuthenticatedCinemaRoute
   '/_authenticated/community': typeof AuthenticatedCommunityRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/level-check': typeof AuthenticatedLevelCheckRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/paati': typeof AuthenticatedPaatiRoute
   '/_authenticated/practice': typeof AuthenticatedPracticeRoute
@@ -181,6 +190,7 @@ export interface FileRouteTypes {
     | '/cinema'
     | '/community'
     | '/dashboard'
+    | '/level-check'
     | '/onboarding'
     | '/paati'
     | '/practice'
@@ -199,6 +209,7 @@ export interface FileRouteTypes {
     | '/cinema'
     | '/community'
     | '/dashboard'
+    | '/level-check'
     | '/onboarding'
     | '/paati'
     | '/practice'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/_authenticated/cinema'
     | '/_authenticated/community'
     | '/_authenticated/dashboard'
+    | '/_authenticated/level-check'
     | '/_authenticated/onboarding'
     | '/_authenticated/paati'
     | '/_authenticated/practice'
@@ -314,6 +326,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/level-check': {
+      id: '/_authenticated/level-check'
+      path: '/level-check'
+      fullPath: '/level-check'
+      preLoaderRoute: typeof AuthenticatedLevelCheckRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
@@ -365,6 +384,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedCinemaRoute: typeof AuthenticatedCinemaRoute
   AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedLevelCheckRoute: typeof AuthenticatedLevelCheckRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedPaatiRoute: typeof AuthenticatedPaatiRoute
   AuthenticatedPracticeRoute: typeof AuthenticatedPracticeRoute
@@ -379,6 +399,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCinemaRoute: AuthenticatedCinemaRoute,
   AuthenticatedCommunityRoute: AuthenticatedCommunityRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedLevelCheckRoute: AuthenticatedLevelCheckRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedPaatiRoute: AuthenticatedPaatiRoute,
   AuthenticatedPracticeRoute: AuthenticatedPracticeRoute,

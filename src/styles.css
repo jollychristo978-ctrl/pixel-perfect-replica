@@ -231,3 +231,13 @@ body:has(.bottom-tabs) { padding-bottom:72px; }
 .tiktok-frame { width:100%; aspect-ratio:9/16; max-height:560px; border:0; border-radius:12px; background:var(--muted); }
 .tiktok-empty { display:flex; align-items:center; justify-content:center; color:var(--muted-foreground); font-size:14px; }
 @media(max-width:900px){ .tiktok-grid { grid-template-columns:1fr; } }
+.level-heard { display:flex; align-items:center; gap:14px; width:100%; margin-top:16px; padding:18px; border:1px solid var(--border); border-radius:16px; background:var(--card); text-align:left; }
+.level-opts { display:grid; gap:10px; margin-top:16px; }
+.level-opts button { padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--card); text-align:left; font-weight:600; }
+.level-opts button.right { border-color:var(--primary); background:color-mix(in oklab, var(--primary) 12%, transparent); }
+.level-opts button.wrong { border-color:var(--destructive); background:color-mix(in oklab, var(--destructive) 12%, transparent); }
+.stamp-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+.stamp { padding:14px 10px; border:2px dashed var(--border); border-radius:14px; text-align:center; opacity:.7; }
+.stamp.got { border-style:solid; border-color:var(--primary); opacity:1; }
+.stamp-emoji { font-size:28px; display:block; margin-bottom:4px; }
+@media(max-width:640px){ .stamp-grid { grid-template-columns:repeat(2,1fr); } }

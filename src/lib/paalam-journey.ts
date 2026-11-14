@@ -5,6 +5,7 @@ export const JOURNEY = [
     {to:'/cinema', label:['Cinema','சினிமா'], copy:['Act your Tamil movie scene','உங்கள் தமிழ்த் திரைப்படக் காட்சியில் நடியுங்கள்']},
   ]},
   {id:'practise', number:2, label:['Practise','பயிற்சி'], subtitle:['Speak it back and earn XP','திரும்பச் சொல்லி XP பெறுங்கள்'], links:[
+    {to:'/level-check', label:['Level check','நிலைச் சோதனை'], copy:['Find your starting level','உங்கள் தொடக்க நிலையைக் கண்டறியுங்கள்']},
     {to:'/paati', label:['Paati Says','பாட்டி சொல்கிறார்'], copy:['Quick-fire spoken challenges','விரைவான பேச்சுச் சவால்கள்']},
     {to:'/practice', label:['AI Partner','AI துணை'], copy:['Practise for your next call','உங்கள் அடுத்த அழைப்புக்குப் பயிற்சி செய்யுங்கள்']},
     {to:'/scenes', label:['Scenes','காட்சிகள்'], copy:['Tamil role-play in Sri Lanka','இலங்கைச் சூழல்களில் தமிழ்ப் பயிற்சி']},

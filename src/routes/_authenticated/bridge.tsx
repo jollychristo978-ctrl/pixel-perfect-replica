@@ -6,6 +6,7 @@ import {FIRST_CALL_XP,callProgress} from '@/lib/paalam-journey';
 import { bridgeOptions } from '@/lib/paalam.queries';
 import { meta } from '@/lib/paalam';
 import { usePaalam } from '@/components/paalam/context';
+import { STAMPS } from '@/lib/paaru';
 
 export const Route = createFileRoute('/_authenticated/bridge')({
   head: () => meta('The Bridge', 'Every word you learn lays a brick on the bridge from London to Jaffna.'),
@@ -88,6 +89,7 @@ function Bridge() {
         ))}
       </div>
 
+      <section className="mt-8"><h2 className="text-xl font-semibold mb-1">{t('Passport stamps','கடவுச்சீட்டு முத்திரைகள்')}</h2><p className="subtext mb-3">{t('Save words to collect stamps from Tamil Nadu and Sri Lanka.','சொற்களைச் சேமித்து முத்திரைகளைச் சேகரியுங்கள்.')}</p><div className="stamp-grid">{STAMPS.map(s=>{const got=data.words.length>=s.words;return <div key={s.id} className={got?'stamp got':'stamp'}><span className="stamp-emoji" aria-hidden="true">{got?s.emoji:'🔒'}</span><p className="font-semibold text-sm">{t(s.label[0],s.label[1])}</p><p className="subtext text-xs">{got?t('Collected','சேகரிக்கப்பட்டது'):t(`${s.words-data.words.length} more words`,`இன்னும் ${s.words-data.words.length} சொற்கள்`)}</p></div>})}</div></section>
       <section className="mt-8"><h2 className="text-xl font-semibold mb-3">{t('My Words','என் சொற்கள்')}</h2>{data.words.length?<div className="word-grid">{data.words.map(word=><div className="word-chip" key={word.tamil}><p className="word-tamil font-tamil">{word.tamil}</p><p className="subtext">{word.transliteration}</p><p className="subtext text-xs">{word.english}</p></div>)}</div>:<p className="subtext">{t('No words saved yet.','இன்னும் சொற்கள் சேமிக்கப்படவில்லை.')}</p>}</section>
 
       <h2 className="text-xl font-semibold mt-8 mb-3 flex items-center gap-2"><Users size={18} />{t('Pair league', 'ஜோடி லீக்')}</h2>
