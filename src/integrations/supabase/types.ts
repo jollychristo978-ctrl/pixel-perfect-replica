@@ -76,6 +76,51 @@ export type Database = {
           },
         ]
       }
+      cinema_attempts: {
+        Row: {
+          line_index: number
+          meaning: number
+          pronunciation: number | null
+          scene_id: string
+          user_id: string
+        }
+        Insert: {
+          line_index: number
+          meaning: number
+          pronunciation?: number | null
+          scene_id: string
+          user_id: string
+        }
+        Update: {
+          line_index?: number
+          meaning?: number
+          pronunciation?: number | null
+          scene_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      cinema_completions: {
+        Row: {
+          points: number
+          scene_id: string
+          stars: number
+          user_id: string
+        }
+        Insert: {
+          points: number
+          scene_id: string
+          stars: number
+          user_id: string
+        }
+        Update: {
+          points?: number
+          scene_id?: string
+          stars?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       clips: {
         Row: {
           created_at: string
@@ -300,6 +345,10 @@ export type Database = {
       book_paalam_call: {
         Args: { p_partner_name: string; p_slot_start: string }
         Returns: undefined
+      }
+      complete_cinema_scene: {
+        Args: { p_scene: string; p_user: string }
+        Returns: Json
       }
       consent_voice_twin: { Args: { p_voice_id: string }; Returns: undefined }
       create_charity_invite: {

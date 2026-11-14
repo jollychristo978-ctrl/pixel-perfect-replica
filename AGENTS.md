@@ -35,4 +35,5 @@ use the editor.
 - Use one root auth subscriber and clear the query cache before signing out so private student data cannot linger.
 - Keep password recovery on public pages using Cloud Auth emails and updateUser; the root auth subscriber records recovery events so consumed URL tokens still open the reset form.
 - Keep bilingual UI state in the Paalam provider; translated labels share the same screens and profile data.
+- Cinema Tutor stores server-scored attempts privately and awards each scene once through a service-only atomic completion RPC; transcript-derived pronunciation scores are explicitly estimates, not acoustic assessment.
 - Do not expose learner discovery, partner matching, or messaging before a safeguarding and consent workflow exists, because the audience includes minors.

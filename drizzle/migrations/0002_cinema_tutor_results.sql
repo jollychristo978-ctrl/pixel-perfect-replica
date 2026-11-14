@@ -1,0 +1,20 @@
+CREATE TABLE public.cinema_attempts (user_id uuid NOT NULL, scene_id text NOT NULL, line_index integer NOT NULL CHECK(line_index between 0 and 2), meaning integer NOT NULL CHECK(meaning between 0 and 100), pronunciation integer CHECK(pronunciation between 0 and 100), PRIMARY KEY(user_id,scene_id,line_index));
+GRANT SELECT ON public.cinema_attempts TO authenticated; GRANT ALL ON public.cinema_attempts TO service_role;
+ALTER TABLE public.cinema_attempts ENABLE ROW LEVEL SECURITY;
+CREATE POLICY cinema_attempts_self ON public.cinema_attempts FOR SELECT TO authenticated USING(user_id=auth.uid());
+CREATE TABLE public.cinema_completions (user_id uuid NOT NULL, scene_id text NOT NULL, stars integer NOT NULL CHECK(stars between 1 and 5), points integer NOT NULL, PRIMARY KEY(user_id,scene_id));
+GRANT SELECT ON public.cinema_completions TO authenticated; GRANT ALL ON public.cinema_completions TO service_role;
+ALTER TABLE public.cinema_completions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY cinema_completions_self ON public.cinema_completions FOR SELECT TO authenticated USING(user_id=auth.uid());
+CREATE FUNCTION public.complete_cinema_scene(p_user uuid,p_scene text) RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path=public AS $$ DECLARE n integer; rating integer; reward integer; existing public.cinema_completions; BEGIN
+ SELECT * INTO existing FROM public.cinema_completions WHERE user_id=p_user AND scene_id=p_scene;
+ IF FOUND THEN RETURN jsonb_build_object('stars',existing.stars,'points',existing.points,'awarded',false); END IF;
+ SELECT count(*),greatest(1,least(5,ceil(avg(CASE WHEN pronunciation IS NULL THEN meaning ELSE (meaning+pronunciation)/2.0 END)/20)::integer)) INTO n,rating FROM public.cinema_attempts WHERE user_id=p_user AND scene_id=p_scene;
+ IF n<>3 THEN RAISE EXCEPTION 'Finish all three lines'; END IF;
+ reward:=rating*10;
+ INSERT INTO public.cinema_completions VALUES(p_user,p_scene,rating,reward) ON CONFLICT DO NOTHING;
+ IF NOT FOUND THEN SELECT * INTO existing FROM public.cinema_completions WHERE user_id=p_user AND scene_id=p_scene; RETURN jsonb_build_object('stars',existing.stars,'points',existing.points,'awarded',false); END IF;
+ INSERT INTO public.xp_events(user_id,points,reason) VALUES(p_user,reward,'cinema_'||p_scene);
+ UPDATE public.impact_counters SET bricks=bricks+reward WHERE id=1;
+ RETURN jsonb_build_object('stars',rating,'points',reward,'awarded',true); END; $$;
+REVOKE ALL ON FUNCTION public.complete_cinema_scene(uuid,text) FROM PUBLIC,anon,authenticated; GRANT EXECUTE ON FUNCTION public.complete_cinema_scene(uuid,text) TO service_role;

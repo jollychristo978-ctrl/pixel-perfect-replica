@@ -15,6 +15,13 @@
       "when": 1794670802277,
       "tag": "0001_practice_partner_and_voice_twin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794672435533,
+      "tag": "0002_cinema_tutor_results",
+      "breakpoints": true
     }
   ]
 }

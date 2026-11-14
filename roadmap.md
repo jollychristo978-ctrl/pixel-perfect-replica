@@ -1,5 +1,5 @@
 - [x] Build Paalam bilingual language selection and account flow
-- [ ] Add the Tamil actor feature — waiting for the user to describe the earlier idea, which is absent from the available briefs.
+- [ ] Build Cinema Tutor: original Ravi Anna avatar, Cinema Hall unlocks, spoken scene acting, AI feedback, audio-driven mouth animation, Box Office stars and bridge rewards.
 - [x] Save profiles with protected learner and staff roles
 - [x] Add charity invites and coordinator student management
 - [x] Verify onboarding, profile persistence, access rules and mobile layout
