@@ -39,3 +39,4 @@ use the editor.
 - Keep bilingual UI state in the Paalam provider; translated labels share the same screens and profile data.
 - Cinema Tutor stores server-scored attempts privately and awards each scene once through a service-only atomic completion RPC; transcript-derived pronunciation scores are explicitly estimates, not acoustic assessment.
 - Do not expose learner discovery, partner matching, or messaging before a safeguarding and consent workflow exists, because the audience includes minors.
+- Learners enter without a log-in screen via automatic anonymous accounts on /auth; staff keep a hidden email sign-in so protected roles still need real accounts.
