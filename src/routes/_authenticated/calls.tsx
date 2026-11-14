@@ -7,6 +7,7 @@ import { bookCall } from '@/lib/bridge.functions';
 import { meta } from '@/lib/paalam';
 import { usePaalam } from '@/components/paalam/context';
 import { Button } from '@/components/ui/button';
+import aramLogo from '@/assets/aram-logo.png.asset.json';
 
 export const Route = createFileRoute('/_authenticated/calls')({
   head: () => meta('Sri Lanka calls', 'Organisation-led language exchange with Tea Leaf Trust and virtual mentorship with Aram, with London and Sri Lanka times.'),
@@ -124,11 +125,34 @@ export function LegacyCalls() {
   );
 }
 
+const ORGS=[
+ {id:'tlt',name:'Tea Leaf Trust',kind:['Language exchange','மொழிப் பரிமாற்றம்'],detail:['Hill-country students · 18+','மலையக மாணவர்கள் · 18+'],eta:['Weekdays','வார நாட்கள்'],mark:'TLT'},
+ {id:'aram',name:'Aram',kind:['Virtual mentorship','இணைய வழிகாட்டுதல்'],detail:['1:1 mentor · 18+','தனி வழிகாட்டி · 18+'],eta:['Evenings','மாலை'],logo:aramLogo.url},
+] as const;
 function Calls(){
- const {t}=usePaalam();const {data:bookings}=useSuspenseQuery(myCallsOptions);const [organisation,setOrganisation]=useState('Tea Leaf Trust');
- return <main className="form-page"><p className="text-sm text-primary">{t('Connect','இணை')}</p><h1>{t('Sri Lanka calls','இலங்கை அழைப்புகள்')}</h1><p className="subtext">{t('Organisation-led language exchange with Tea Leaf Trust and virtual mentorship with Aram.','Tea Leaf Trust உடன் நிறுவன வழி மொழிப் பரிமாற்றம் மற்றும் Aram உடன் இணைய வழிகாட்டுதல்.')}</p>
- <section className="call-unlock"><h2>{t('Planned call safeguards','திட்டமிடப்பட்ட அழைப்பு பாதுகாப்புகள்')}</h2><div className="safety-chips">{[['18+ only','18+ மட்டும்'],['ID verified','அடையாளம் சரிபார்க்கப்பட்டது'],['Calls reviewed','அழைப்புகள் மதிப்பாய்வு செய்யப்படும்']].map(([en,ta])=><span className="badge" key={en}><ShieldCheck size={14} className="inline mr-1"/>{t(en??'',ta??'')}</span>)}</div><p className="subtext text-xs">{t('Bookings are not open. These requirements will apply before live calls begin.','முன்பதிவுகள் இன்னும் தொடங்கவில்லை. நிஜ அழைப்புகள் தொடங்கும் முன் இந்த நிபந்தனைகள் அமலாகும்.')}</p></section>
- <div className="field mt-6"><label htmlFor="organisation">{t('Partner organisation','கூட்டாளர் நிறுவனம்')}</label><select id="organisation" value={organisation} onChange={e=>setOrganisation(e.target.value)}><option>Tea Leaf Trust</option><option>Aram</option></select></div><p className="subtext mt-3">{organisation==='Aram'?t('Virtual mentorship','இணைய வழிகாட்டுதல்'):t('School-led language exchange · 18+ learners','பள்ளி வழி மொழிப் பரிமாற்றம் · 18+ மாணவர்கள்')}</p>
- <h2 className="text-lg font-semibold mt-6 mb-3">{t('London and Sri Lanka time','லண்டன் மற்றும் இலங்கை நேரம்')}</h2><div className="slot-list">{nextSlots().slice(0,3).map(slot=><div className="slot-row" key={slot.toISOString()}><div><p>{fmt(slot,'Europe/London')} · {t('London','லண்டன்')}</p><p className="subtext text-xs">{fmt(slot,'Asia/Colombo')} · {t('Sri Lanka','இலங்கை')}</p></div><Lock size={16} className="text-muted-foreground"/></div>)}</div><p className="subtext text-xs mt-2">{t('Time examples only — not confirmed availability.','நேர உதாரணங்கள் மட்டுமே — உறுதிப்படுத்தப்பட்ட நேரங்கள் அல்ல.')}</p><Button disabled className="w-full mt-4"><Lock/>{t('Booking not open yet','முன்பதிவு இன்னும் தொடங்கவில்லை')}</Button>
- {bookings.length>0&&<section className="mt-8"><h2 className="text-lg font-semibold mb-3">{t('Previous demo bookings','முந்தைய டெமோ முன்பதிவுகள்')}</h2><div className="slot-list">{bookings.map(b=><div className="slot-row" key={b.id}><div><p>{b.partner_name}</p><p className="subtext text-xs">{fmt(new Date(b.slot_start),'Europe/London')} London · {fmt(new Date(b.slot_start),'Asia/Colombo')} Colombo</p></div><span className="badge">{t('Demo','டெமோ')}</span></div>)}</div></section>}</main>;
+ const {t}=usePaalam();const {data:bookings}=useSuspenseQuery(myCallsOptions);
+ const [org,setOrg]=useState<string>('tlt');const slots=nextSlots().slice(0,6);const [slot,setSlot]=useState(0);
+ const s=slots[slot];
+ return <main className="cx">
+  <div className="cx-map" aria-hidden="true">
+   <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice"><defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" strokeOpacity=".08"/></pattern></defs><rect width="400" height="260" fill="url(#g)"/><path className="cx-route" d="M70 70 C 160 20, 260 220, 330 190"/><circle cx="70" cy="70" r="7" className="cx-pin"/><circle cx="330" cy="190" r="7" className="cx-pin b"/><circle r="5" className="cx-car"><animateMotion dur="5s" repeatCount="indefinite" path="M70 70 C 160 20, 260 220, 330 190"/></circle></svg>
+   <span className="cx-tag a">London</span><span className="cx-tag b">Sri Lanka</span>
+  </div>
+  <section className="cx-sheet">
+   <div className="cx-grab"/>
+   <h1>{t('Where to practise?','எங்கே பயிற்சி?')}</h1>
+   <div className="cx-trip"><span><i className="dot"/>London · {s?fmt(s,'Europe/London'):''}</span><span><i className="dot sq"/>Sri Lanka · {s?fmt(s,'Asia/Colombo'):''}</span></div>
+   <p className="cx-label">{t('Choose a partner','கூட்டாளரைத் தேர்ந்தெடுங்கள்')}</p>
+   <div className="cx-opts">{ORGS.map(o=><button key={o.id} type="button" onClick={()=>setOrg(o.id)} className={`cx-opt ${org===o.id?'on':''}`}>
+    <span className="cx-logo">{'logo' in o?<img src={o.logo} alt={o.name} width={48} height={48}/>:<b>{o.mark}</b>}</span>
+    <span className="cx-opt-txt"><strong>{o.name}</strong><small>{t(o.kind[0],o.kind[1])} · {t(o.detail[0],o.detail[1])}</small></span>
+    <span className="cx-eta">{t(o.eta[0],o.eta[1])}</span></button>)}</div>
+   <p className="cx-label">{t('Pick a time','நேரத்தைத் தேர்ந்தெடுங்கள்')}</p>
+   <div className="cx-times">{slots.map((d,i)=><button type="button" key={d.toISOString()} onClick={()=>setSlot(i)} className={`cx-time ${slot===i?'on':''}`}><strong>{fmt(d,'Europe/London')}</strong><small>{fmt(d,'Asia/Colombo')} SL</small></button>)}</div>
+   <div className="cx-safe">{[['18+ only','18+ மட்டும்'],['ID verified','அடையாளம் சரிபார்ப்பு'],['Calls reviewed','அழைப்புகள் மதிப்பாய்வு']].map(([en,ta])=><span key={en}><ShieldCheck size={13}/>{t(en??'',ta??'')}</span>)}</div>
+   <Button disabled size="lg" className="w-full cx-cta"><Lock/>{t('Booking opens soon','முன்பதிவு விரைவில்')}</Button>
+   <p className="subtext text-xs text-center mt-2">{t('Example times only — partners confirm real sessions.','நேர உதாரணங்கள் மட்டுமே.')}</p>
+   {bookings.length>0&&<div className="mt-6"><p className="cx-label">{t('Previous demo bookings','முந்தைய டெமோ முன்பதிவுகள்')}</p><div className="slot-list">{bookings.map(b=><div className="slot-row" key={b.id}><div><p>{b.partner_name}</p><p className="subtext text-xs">{fmt(new Date(b.slot_start),'Europe/London')} London</p></div><Video size={16}/></div>)}</div></div>}
+  </section>
+ </main>;
 }
