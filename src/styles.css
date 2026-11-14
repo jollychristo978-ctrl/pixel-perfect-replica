@@ -219,3 +219,10 @@
 .home-journey-card h3 { font-size:20px; font-weight:700; }
 .home-journey-go { display:inline-flex; align-items:center; gap:4px; margin-top:auto; color:var(--primary); font-weight:600; font-size:14px; }
 @media(max-width:640px){ .home-journey-grid { grid-template-columns:1fr; } }
+.section-links { display:flex; gap:8px; overflow-x:auto; padding-top:8px; padding-bottom:8px; scrollbar-width:none; }
+.section-links a { flex-shrink:0; padding:6px 14px; border-radius:999px; border:1px solid var(--border); font-size:14px; font-weight:600; color:var(--muted-foreground); }
+.section-links a.active { background:var(--primary); border-color:var(--primary); color:var(--primary-foreground); }
+.bottom-tabs { position:fixed; left:0; right:0; bottom:0; z-index:50; display:grid; grid-template-columns:repeat(3,1fr); background:var(--background); border-top:1px solid var(--border); padding-bottom:env(safe-area-inset-bottom); }
+.bottom-tabs a { display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px 0 10px; font-size:12px; font-weight:600; color:var(--muted-foreground); }
+.bottom-tabs a.active { color:var(--primary); }
+body:has(.bottom-tabs) { padding-bottom:72px; }
