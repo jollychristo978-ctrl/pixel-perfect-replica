@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Signed in learners read scene ambience" ON storage.objects;

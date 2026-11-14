@@ -36,6 +36,13 @@
       "when": 1794674032215,
       "tag": "0004_correct_roleplay_bridge_reward",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1794675939939,
+      "tag": "0005_drop_scene_ambience_read_policy",
+      "breakpoints": true
     }
   ]
 }
