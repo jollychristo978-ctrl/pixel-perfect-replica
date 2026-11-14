@@ -2,4 +2,6 @@
 - [x] Save profiles with protected learner and staff roles
 - [x] Add charity invites and coordinator student management
 - [x] Verify onboarding, profile persistence, access rules and mobile layout
+- [x] Build the bridge concept: Clip Quest, bridge map with XP/streaks/badges, public impact page, dual-timezone call booking, Paati Says voice game
 - [ ] Activate the first admin and verify coordinator invite redemption end-to-end — waiting for the user to identify their staff account; no admin is assigned yet.
+- [ ] Verify Clip Quest and Paati Says with real recorded audio — pages render and booking is proven, but the ElevenLabs transcription path was not exercised with a real clip.
