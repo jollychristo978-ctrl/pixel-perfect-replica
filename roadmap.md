@@ -20,7 +20,8 @@
 - [x] Remove word lock from TikTok practice
 - [x] Remove word lock from TikTok practice
 - [ ] Remove 'volumes' — waiting for the user to say which sounds to remove
-- [ ] Uber-style partner search — blocked until a safeguarding and consent workflow exists (audience includes minors)
+- [x] Uber-style organisation search with Tea Leaf Trust and Aram, bilingual filters, details and official group enquiries; no individual discovery.
+- [ ] List and book confirmed organisation-run sessions — waiting for partners to supply session schedules, eligibility and joining details.
 - [x] Remove log-ins: open straight in with a hidden per-device account
 - [x] Add Gajaan TikTok video 7702572412210171139 as demo in TikTok practice
 - [x] ElevenLabs English dub for Gajaan demo
