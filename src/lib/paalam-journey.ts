@@ -1,6 +1,7 @@
 export const JOURNEY = [
   {id:'watch', number:1, label:['Watch','பார்'], subtitle:['Learn from short clips and scenes','குறுகிய காணொளிகள் மற்றும் காட்சிகளில் இருந்து கற்றுக்கொள்ளுங்கள்'], links:[
     {to:'/quest', label:['Clip Quest','கிளிப் தேடல்'], copy:['Turn a clip into a Tamil lesson','காணொளியைத் தமிழ்ப் பாடமாக மாற்றுங்கள்']},
+    {to:'/tiktok', label:['TikTok practice','டிக்டாக் பயிற்சி'], copy:['Three creator clips to copy','பின்பற்ற மூன்று காணொளிகள்']},
     {to:'/cinema', label:['Cinema','சினிமா'], copy:['Act your Tamil movie scene','உங்கள் தமிழ்த் திரைப்படக் காட்சியில் நடியுங்கள்']},
   ]},
   {id:'practise', number:2, label:['Practise','பயிற்சி'], subtitle:['Speak it back and earn XP','திரும்பச் சொல்லி XP பெறுங்கள்'], links:[

@@ -25,6 +25,7 @@ import { Route as AuthenticatedPaatiRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedPracticeRouteImport } from './routes/_authenticated/practice'
 import { Route as AuthenticatedQuestRouteImport } from './routes/_authenticated/quest'
 import { Route as AuthenticatedScenesRouteImport } from './routes/_authenticated/scenes'
+import { Route as AuthenticatedTiktokRouteImport } from './routes/_authenticated/tiktok'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -105,6 +106,11 @@ const AuthenticatedScenesRoute = AuthenticatedScenesRouteImport.update({
   path: '/scenes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTiktokRoute = AuthenticatedTiktokRouteImport.update({
+  id: '/tiktok',
+  path: '/tiktok',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/scenes': typeof AuthenticatedScenesRoute
+  '/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/practice': typeof AuthenticatedPracticeRoute
   '/quest': typeof AuthenticatedQuestRoute
   '/scenes': typeof AuthenticatedScenesRoute
+  '/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/_authenticated/practice': typeof AuthenticatedPracticeRoute
   '/_authenticated/quest': typeof AuthenticatedQuestRoute
   '/_authenticated/scenes': typeof AuthenticatedScenesRoute
+  '/_authenticated/tiktok': typeof AuthenticatedTiktokRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -177,6 +186,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/quest'
     | '/scenes'
+    | '/tiktok'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -194,6 +204,7 @@ export interface FileRouteTypes {
     | '/practice'
     | '/quest'
     | '/scenes'
+    | '/tiktok'
   id:
     | '__root__'
     | '/'
@@ -212,6 +223,7 @@ export interface FileRouteTypes {
     | '/_authenticated/practice'
     | '/_authenticated/quest'
     | '/_authenticated/scenes'
+    | '/_authenticated/tiktok'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -337,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedScenesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/tiktok': {
+      id: '/_authenticated/tiktok'
+      path: '/tiktok'
+      fullPath: '/tiktok'
+      preLoaderRoute: typeof AuthenticatedTiktokRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -351,6 +370,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedPracticeRoute: typeof AuthenticatedPracticeRoute
   AuthenticatedQuestRoute: typeof AuthenticatedQuestRoute
   AuthenticatedScenesRoute: typeof AuthenticatedScenesRoute
+  AuthenticatedTiktokRoute: typeof AuthenticatedTiktokRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -364,6 +384,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedPracticeRoute: AuthenticatedPracticeRoute,
   AuthenticatedQuestRoute: AuthenticatedQuestRoute,
   AuthenticatedScenesRoute: AuthenticatedScenesRoute,
+  AuthenticatedTiktokRoute: AuthenticatedTiktokRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
