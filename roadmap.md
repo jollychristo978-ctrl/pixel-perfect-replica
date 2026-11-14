@@ -1,0 +1,2 @@
+- [ ] ElevenLabs onboard CLI
+- [ ] Build Grammar Ghost Hunt game
