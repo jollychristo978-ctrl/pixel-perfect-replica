@@ -1,8 +1,10 @@
 import { queryOptions } from '@tanstack/react-query';
 import { getAccount, getStaffData } from './paalam.functions';
 import { getBridgeData, getImpact, getMyCalls } from './bridge.functions';
+import { getPracticeData } from './practice.functions';
 export const accountOptions = queryOptions({queryKey:['paalam-account'], queryFn:()=>getAccount(), staleTime:30000});
 export const staffOptions = queryOptions({queryKey:['paalam-staff'], queryFn:()=>getStaffData(), staleTime:30000});
 export const bridgeOptions = queryOptions({queryKey:['paalam-bridge'], queryFn:()=>getBridgeData(), staleTime:15000});
 export const impactOptions = queryOptions({queryKey:['paalam-impact'], queryFn:()=>getImpact(), staleTime:30000});
 export const myCallsOptions = queryOptions({queryKey:['paalam-calls'], queryFn:()=>getMyCalls(), staleTime:15000});
+export const practiceOptions = queryOptions({queryKey:['paalam-practice'], queryFn:()=>getPracticeData(), staleTime:15000});

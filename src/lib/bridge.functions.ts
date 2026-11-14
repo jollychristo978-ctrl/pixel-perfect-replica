@@ -4,11 +4,20 @@ import { z } from 'zod';
 import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
 
 // Workerd-safe base64 helpers (no Node Buffer).
-function base64ToBytes(base64: string): Uint8Array {
+export function base64ToBytes(base64: string): Uint8Array {
   const bin = atob(base64);
   const bytes = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
   return bytes;
+}
+
+export function bytesToBase64(bytes: Uint8Array): string {
+  let bin = '';
+  const CHUNK = 8192;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    bin += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(bin);
 }
 
 function requireElevenLabsKey(): string {
@@ -17,7 +26,7 @@ function requireElevenLabsKey(): string {
   return key;
 }
 
-async function transcribeAudio(base64: string, mime: string): Promise<string> {
+export async function transcribeAudio(base64: string, mime: string): Promise<string> {
   const apiKey = requireElevenLabsKey();
   const bytes = base64ToBytes(base64);
   const form = new FormData();
@@ -36,7 +45,7 @@ async function transcribeAudio(base64: string, mime: string): Promise<string> {
   return (json.text as string) ?? '';
 }
 
-async function askAiJson(system: string, user: string): Promise<unknown> {
+export async function askAiJson(system: string, user: string): Promise<unknown> {
   const res = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
     method: 'POST',
     headers: {

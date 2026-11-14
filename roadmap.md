@@ -4,4 +4,7 @@
 - [x] Verify onboarding, profile persistence, access rules and mobile layout
 - [x] Build the bridge concept: Clip Quest, bridge map with XP/streaks/badges, public impact page, dual-timezone call booking, Paati Says voice game
 - [ ] Activate the first admin and verify coordinator invite redemption end-to-end — waiting for the user to identify their staff account; no admin is assigned yet.
+- [x] Add AI Practice Partner: topic picker with partner sharing, typed/spoken chat with Tamil replies, transliteration and English toggle, ElevenLabs voices, session XP and book-next-call nudge
+- [x] Add Voice Twin: 18+ only, coordinator verification, consent screen, private voice ID storage, permanent AI label, instant delete
 - [ ] Verify Clip Quest and Paati Says with real recorded audio — pages render and booking is proven, but the ElevenLabs transcription path was not exercised with a real clip.
+- [ ] Verify Voice Twin consent flow as a verified 18+ volunteer — the under-18 hiding is proven, but consent, voice playback and deletion need an 18+ verified test account.

@@ -133,6 +133,30 @@ export type Database = {
         }
         Relationships: []
       }
+      practice_topics: {
+        Row: {
+          created_at: string
+          id: string
+          shared: boolean
+          topic: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          shared?: boolean
+          topic: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          shared?: boolean
+          topic?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           age_group: string
@@ -147,6 +171,9 @@ export type Database = {
           onboarded: boolean
           school: string
           timezone: string
+          voice_twin_consented_at: string | null
+          voice_twin_id: string | null
+          voice_verified: boolean
         }
         Insert: {
           age_group?: string
@@ -161,6 +188,9 @@ export type Database = {
           onboarded?: boolean
           school?: string
           timezone?: string
+          voice_twin_consented_at?: string | null
+          voice_twin_id?: string | null
+          voice_verified?: boolean
         }
         Update: {
           age_group?: string
@@ -175,6 +205,9 @@ export type Database = {
           onboarded?: boolean
           school?: string
           timezone?: string
+          voice_twin_consented_at?: string | null
+          voice_twin_id?: string | null
+          voice_verified?: boolean
         }
         Relationships: [
           {
@@ -268,10 +301,12 @@ export type Database = {
         Args: { p_partner_name: string; p_slot_start: string }
         Returns: undefined
       }
+      consent_voice_twin: { Args: { p_voice_id: string }; Returns: undefined }
       create_charity_invite: {
         Args: { p_charity_name: string }
         Returns: string
       }
+      delete_voice_twin: { Args: never; Returns: undefined }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -298,6 +333,10 @@ export type Database = {
           p_role: Database["public"]["Enums"]["app_role"]
           p_user_id: string
         }
+        Returns: undefined
+      }
+      set_voice_verified: {
+        Args: { p_user_id: string; p_verified: boolean }
         Returns: undefined
       }
     }
