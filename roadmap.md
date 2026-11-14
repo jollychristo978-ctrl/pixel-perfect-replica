@@ -22,3 +22,4 @@
 - [ ] Remove 'volumes' — waiting for the user to say which sounds to remove
 - [ ] Uber-style partner search — blocked until a safeguarding and consent workflow exists (audience includes minors)
 - [x] Remove log-ins: open straight in with a hidden per-device account
+- [x] Add Gajaan TikTok video 7702572412210171139 as demo in TikTok practice
